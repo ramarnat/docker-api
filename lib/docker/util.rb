@@ -32,8 +32,15 @@ module Docker::Util
   end
 
   def extract_id(body)
-    line = body.lines.to_a[-1]
-    if (id = line.match(/^Successfully built ([a-f0-9]+)$/)) && !id[1].empty?
+    # find the last successfull build id
+    id = nil
+    body.lines.to_a.reverse.each do |line|
+      if (id = line.match(/^Successfully built ([a-f0-9]+)$/)) && !id[1].empty?
+        break
+      end
+    end
+
+    if id
       id[1]
     else
       raise UnexpectedResponseError, "Couldn't find id: #{body}"
