@@ -24,7 +24,7 @@ class Docker::Image
 
   # Push the Image to the Docker registry.
   def push(options = {})
-    connection.post(path_for(:push), options, :body => Docker.creds)
+    connection.post(path_for(:push), options)
     self
   end
 
