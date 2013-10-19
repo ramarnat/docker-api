@@ -24,10 +24,10 @@ class Docker::Image
       Docker::Container.create(opts, connection)
                        .tap(&:start!)
     rescue ServerError
-      unless cmd
-        raise ServerError, "No command specified."
-      else
+      if cmd
         raise ServerError, "Docker Server Error."
+      else
+        raise ServerError, "No command specified."
       end
     end
   end
