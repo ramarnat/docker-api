@@ -1,0 +1,68 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://unix/v1.4/images/create?fromImage=base
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Swipely/Docker-API 1.6.0
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbg==
+      !binary "RGF0ZQ==":
+      - !binary |-
+        U2F0LCAxOSBPY3QgMjAxMyAxNjo1OToxMyBHTVQ=
+      !binary "VHJhbnNmZXItRW5jb2Rpbmc=":
+      - !binary |-
+        Y2h1bmtlZA==
+    body:
+      encoding: US-ASCII
+      string: ! '{"status":"Pulling repository base"}{"status":"Pulling","progress":"image
+        (ubuntu-quantl) from base","id":"b750fe79269d"}{"status":"Pulling","progress":"image
+        (ubuntu-quantl) from base, endpoint: https://cdn-registry-1.docker.io/v1/","id":"b750fe79269d"}{"status":"Pulling","progress":"dependend
+        layers","id":"b750fe79269d"}{"status":"Download","progress":"complete","id":"b750fe79269d"}{"status":"Download","progress":"complete","id":"27cf78414709"}{"status":"Download","progress":"complete","id":"b750fe79269d"}'
+    http_version:
+  recorded_at: Sat, 19 Oct 2013 16:59:15 GMT
+- request:
+    method: post
+    uri: http://unix/v1.4/containers/create
+    body:
+      encoding: UTF-8
+      string: ! '{"Image":"base"}'
+    headers:
+      User-Agent:
+      - Swipely/Docker-API 1.6.0
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 500
+      message: ''
+    headers:
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        dGV4dC9wbGFpbjsgY2hhcnNldD11dGYtOA==
+      !binary "Q29udGVudC1MZW5ndGg=":
+      - !binary |-
+        MjE=
+      !binary "RGF0ZQ==":
+      - !binary |-
+        U2F0LCAxOSBPY3QgMjAxMyAxNjo1OToxNSBHTVQ=
+    body:
+      encoding: US-ASCII
+      string: ! 'No command specified
+
+'
+    http_version:
+  recorded_at: Sat, 19 Oct 2013 16:59:15 GMT
+recorded_with: VCR 2.6.0

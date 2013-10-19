@@ -148,7 +148,7 @@ describe Docker::Image do
 
     context 'when the argument is nil' do
       let(:cmd) { nil }
-      context 'no command configured in image' do
+      context 'no command configured in image', :vcr do
         it 'should raise an error if no command is specified' do
           expect {output}.to raise_error(Docker::Error::ServerError,
                                          "No command specified.")
