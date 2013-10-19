@@ -16,9 +16,10 @@ class Docker::Image
   # Given a command and optional list of streams to attach to, run a command on
   # an Image. This will not modify the Image, but rather create a new Container
   # to run the Image.
-  def run(cmd)
-    cmd = cmd.split(/\s+/) if cmd.is_a?(String)
-    Docker::Container.create({ 'Image' => self.id, 'Cmd' => cmd }, connection)
+  def run(cmd=nil)
+    opts = { 'Image' => self.id }
+    opts["Cmd"] = cmd.split(/\s+/) if cmd.is_a?(String) if cmd
+    Docker::Container.create(opts, connection)
                      .tap(&:start!)
   end
 
