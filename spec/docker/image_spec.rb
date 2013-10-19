@@ -145,6 +145,16 @@ describe Docker::Image do
         output.should == "/bin/pwd\n"
       end
     end
+
+    context 'when the argument is nil' do
+      let(:cmd) { nil }
+      context 'no command configured in image' do
+        it 'should raise an error if no command is specified' do
+          expect {output}.to raise_error(Docker::Error::ServerError,
+                                         "No command specified.")
+        end
+      end
+    end
   end
 
   describe '.create' do
