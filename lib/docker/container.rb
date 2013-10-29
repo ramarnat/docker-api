@@ -64,7 +64,7 @@ class Docker::Container
     config = options.delete(:run)
     hash = Docker::Util.parse_json(connection.post('/commit',
                                                    options,
-                                                   :body => config.to_json)
+                                                   :body => config.to_s)
                                   )
     Docker::Image.send(:new, self.connection, hash['Id'])
   end
